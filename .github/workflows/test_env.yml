@@ -1,27 +1,27 @@
 name: Print Hello
 
+# Specify the event that triggers the workflow (push to main branch)
 on:
   push:
     branches:
       - main
-    workflow_dispatch: 
+
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v2
-    - name: Setup Node.js
-      uses: actions/setup-node@v2
-      with:
-        node-version: '18'  
+      # Step 1: Checkout the repository code
+      - name: Checkout repository
+        uses: actions/checkout@v2
 
-    - name: Run JavaScript code
-      run: node hello.js
-      id: hello_output
-      continue-on-error: true
+      # Step 2: Run the JavaScript code and capture the output
+      - name: Run JavaScript code
+        run: node hello.js
+        id: hello_output
+        continue-on-error: true
 
-    - name: Echo Hello Output
-      if: ${{ success() }}
-      run: echo "Output: ${{ steps.hello_output.outputs.stdout }}"
+      # Step 3: Echo the output if the previous step was successful
+      - name: Echo Hello Output
+        if: ${{ success() }}
+        run: echo "Output: ${{ steps.hello_output.outputs.stdout }}"
