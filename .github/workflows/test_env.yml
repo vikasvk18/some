@@ -19,3 +19,5 @@ jobs:
       # Step 2: Run the JavaScript code and capture the output
       - name: Run JavaScript code
         run: node hello.js
+        env:
+          MY_SECRET: ${{ secrets.SOME_URL }}
