@@ -1,11 +1,11 @@
 name: Print Hello
 
-# Specify the event that triggers the workflow (push to main branch)
+# Specify the event that triggers the workflow (push to main branch and manual workflow dispatch)
 on:
   push:
     branches:
       - main
-    workflow_dispatch:  
+  workflow_dispatch:  
 
 jobs:
   build:
@@ -19,11 +19,3 @@ jobs:
       # Step 2: Run the JavaScript code and capture the output
       - name: Run JavaScript code
         run: node hello.js
-        id: hello_output
-        continue-on-error: true
-
-      # Step 3: Echo the output if the previous step was successful
-      - name: Echo Hello Output
-        if: ${{ success() }}
-        run: |
-            echo "Output: ${{ steps.hello_output.outputs.stdout }}"
