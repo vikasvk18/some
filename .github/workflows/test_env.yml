@@ -19,3 +19,9 @@ jobs:
 
     - name: Run JavaScript code
       run: node hello.js
+      id: hello_output
+      continue-on-error: true
+
+    - name: Echo Hello Output
+      if: ${{ success() }}
+      run: echo "Output: ${{ steps.hello_output.outputs.stdout }}"
