@@ -25,4 +25,5 @@ jobs:
       # Step 3: Echo the output if the previous step was successful
       - name: Echo Hello Output
         if: ${{ success() }}
-        run: echo "Output: ${{ steps.hello_output.outputs.stdout }}"
+        run: |
+            echo "Output: ${{ steps.hello_output.outputs.stdout }}"
