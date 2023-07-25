@@ -20,5 +20,5 @@ jobs:
       - name: Run JavaScript code
         run: node hello.js
         env:
-          MY_SECRET: ${{ vars.SOME_URL }}
-          SOME_URL : ${{ vars.SOME_URL }}
+          MY_SECRET: ${{ env.SOME_URL }}
+          SOME_URL : ${{ env.SOME_URL }}
